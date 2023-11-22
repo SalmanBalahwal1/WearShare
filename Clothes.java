@@ -10,7 +10,7 @@ public class Clothes {
 
     // Constructor
     public Clothes (){
-        this(1, "Clothes", 1);
+        this(1, "HeadClothes", 1);
     }
     
     public Clothes(int ID, String type, double size) {
@@ -59,7 +59,7 @@ public class Clothes {
         while (temp.next != null) {
             temp = temp.next;
         }
-        temp.next = newNode;
+        temp.setNext(newNode);
     }
 
     // Remove Head (First node)
@@ -101,10 +101,21 @@ public class Clothes {
     //              toString  & getters & Setters
     // Print clothes information
     @Override
-    public String toString() {
-        // Imp
-        return "";
+public String toString() {
+    StringBuilder sb = new StringBuilder();
+    Clothes temp = this; // Start with the current object
+
+    while (temp != null) {
+        sb.append("ID: ").append(temp.getID()).append("\n");
+        sb.append("Type: ").append(temp.getType()).append("\n");
+        sb.append("Size: ").append(temp.getSize()).append("\n");
+        sb.append("\n");
+        
+        temp = temp.next; // Move to the next Clothes object
     }
+    
+    return sb.toString();
+}
 
     // Getter and setter methods
 
@@ -138,5 +149,13 @@ public class Clothes {
 
     public void setImage(BufferedImage image) {
         this.image = image;
+    }
+
+    public Clothes getNext() {
+        return next;
+    }
+
+    public void setNext(Clothes next) {
+        this.next = next;
     }
 }

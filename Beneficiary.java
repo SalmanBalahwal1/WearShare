@@ -7,7 +7,7 @@ public class Beneficiary extends User{
 
     // Constructor
     public Beneficiary(){
-        super(1, "Bene", "1Bene", "X", "0000000000");
+        this(1, "Bene", "1Bene", "X", "0000000000", 1, 1, 1, null);
     }
 
     public Beneficiary(int ID, String name, String password, String location, String phoneNumber, int weight, int tall, double shoesSize, Clothes headClothes) {
@@ -15,15 +15,20 @@ public class Beneficiary extends User{
         this.weight = weight;
         this.tall = tall;
         this.shoesSize = shoesSize;
-        this.headClothes = headClothes;
+        this.headClothes = new Clothes();
     }
 
     // Print beneficiary information
     @Override
     public String toString() {
-            // Imp
-            return "";
-        }
+        return super.toString() + "\t" + 
+                "Weight: " + weight + "\t" +
+                "Tall: " + tall + "\t" +
+                "Shoe Size: " + shoesSize + "\t"
+                + "\t\n" + "Clothes:\n" + (headClothes != null ? headClothes.toString() : "None");
+            }
+
+    
 
     public int getWeight() {
         return weight;
@@ -47,6 +52,10 @@ public class Beneficiary extends User{
 
     public void setShoeSize(double shoesSize) {
         this.shoesSize = shoesSize;
+    }
+
+    public Clothes getHeadClothes(){
+        return this.headClothes;
     }
 
     

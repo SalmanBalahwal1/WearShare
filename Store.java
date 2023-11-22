@@ -16,9 +16,11 @@ public class Store extends User{
     // Print store information
     @Override
     public String toString() {
-        // Imp
-        return "";
+        return super.toString() + "\t" +
+                "Promotions: " + promotions + "\t" +
+                "Code: " + code;
     }
+
 
     // Getter and setter methods
 

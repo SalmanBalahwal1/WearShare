@@ -15,9 +15,11 @@ public class Association extends User{
     // Print association information
     @Override
     public String toString() {
-        // Imp
-        return "";
+        return super.toString()
+        //+ "\t" + "Head Clothes: " + (headClothes != null ? headClothes.toString() : "None");
+        + "\t\n" + "Clothes:\n" + (headClothes != null ? headClothes.toString() : "None");
     }
+    
 
     public Clothes getHeadClothes() {
         return headClothes;

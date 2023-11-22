@@ -27,9 +27,9 @@ public class Donor extends User {
     // Print donor information
     @Override
     public String toString() {
-        // Imp
-        return "";
-    }
+        return super.toString() + "\t" +
+               "Rewards: " + getRewards();
+    }    
 
     // Getter and setter methods
 

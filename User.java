@@ -26,8 +26,14 @@ public class User {
     }
 
     // Checking username & password
-    public boolean login(User headES, String userName, String password) {
-        // Imp
+    public boolean login(User UserHead, String userName, String password) {  
+        User temp = UserHead;
+            while (temp != null) {
+                if (temp.getName() == userName && temp.getPassword() == password) {
+                return true;
+            }
+            temp = temp.getNext();
+        }  
         return false;
     }
 
@@ -112,13 +118,36 @@ public class User {
 
     //              toString  & getters & Setters
 
+// Print header with attribute names
+public static String toStringHeader() {
+    return "ID\tName\tPassword\tLocation\tPhone Number\tAdditional Info\tNext User";
+}
+
+// Print data for the current object
+@Override
+public String toString() {
+    return ID + "\t" + name + "\t" + password + "\t" + location + "\t" + phoneNumber + "\t" + info + "\t" + (next != null ? next.getName() : "None");
+}
+
+// Print all objects in the list
+public static String toStringAll(User head) {
+    StringBuilder sb = new StringBuilder();
+    sb.append(toStringHeader()).append("\n");
+    User current = head;
+    while (current != null) {
+        sb.append(current.toString()).append("\n");
+        current = current.getNext();
+    }
+    return sb.toString();
+}
+
+
+
+
+
 
     // Print user information
-    @Override
-    public String toString() {
-        // Imp
-        return "";
-    }
+    
 
     // Getter and setter methods
 
