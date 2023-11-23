@@ -13,10 +13,7 @@ public class WearShare {
         Association assHead = new Association();
 
         // test
-        System.out.println(donorHead.getRewards());
-
-
-  
+        System.out.println(donorHead.getRewards());    
     // Create additional Beneficiary objects and add them to the end of the list
     Beneficiary bene1 = new Beneficiary(2, "Ali Mohammed", "pass1", "Riyadh", "0512345678", 70, 170, 42.5, null);
     Beneficiary bene2 = new Beneficiary(3, "Mohammed Ali", "pass2", "Jeddah", "0598765432", 80, 175, 40.0, null);
@@ -53,7 +50,7 @@ public class WearShare {
     System.out.println(storeHead.toString() + "\n\n");
     // Print all objects in the list
     System.out.println(Store.toStringAll(storeHead) + "\n\n");
-    
+
 
 
 
@@ -119,7 +116,7 @@ public class WearShare {
     beneList(beneHead);
     storeList(storeHead);
     assList(assHead);
-
+    System.out.println(requestDonor(donor4, ass4, Hi, Hi, Hi,"man"));
 
     }
     public static boolean logIn(User check   ,  String userName, String password) {
@@ -173,20 +170,32 @@ public class WearShare {
         return false;
     }
 
-    public static boolean requestDonor(Donor reqDonor, Association headAss) {
-        if(headAss.getHeadClothes()!=null){
-            reqDonor.getRewards();
-            System.out.println(" Your request is ok ");
-            return true;
+    public static boolean requestDonor(Donor reqDonor, Association headAss, int clotheID,int ID,int size,String type) {
+       
+        Association temp=headAss;
+         Clothes tempClothes=new Clothes();
+        temp=(Association) temp.getNext();
+        
+        if(size >= 0){
+            return false;
+        }
+       
+       
+      if(temp.getHeadClothes().searchByID(ID)!=null){
+        temp.getHeadClothes().addLast(tempClothes);
+        reqDonor.addReward();
+
+           return false;
  
-         }
-         else{
-             System.out.println(" You have a problem");
- 
-         }
-         return false;
-     }
+         }if("women".equalsIgnoreCase(type)||"men".equalsIgnoreCase(type)||"child".equalsIgnoreCase(type)){
+            return false;
+          }return false;
+          
+    }
+        
      
+    
+    
 
     // public static int ML(BufferedImage image)
     public static int ML(int num) {
@@ -194,22 +203,25 @@ public class WearShare {
         return 0;
     }
 
-    public static boolean useReward(Beneficiary reqBenf, Store headStore, int storeID) {
-        if(headStore.searchByID(storeID)!=null){
-            reqBenf.addFirst(headStore.searchByID(storeID));
-            headStore.removeItem(headStore.searchByID(storeID));
-    
-            System.out.println(" You can use rewards");
+    public static boolean useReward(Beneficiary reqBenf, Store headStore, int storeID,Donor heaDonor, int ID, int points, int requiredPoints) {
+        boolean hasEnoughPoints;
+        if(heaDonor.searchByID(ID)!=null){
+           hasEnoughPoints=heaDonor.getRewards()>=points;
+           return hasEnoughPoints;
+    }   if(headStore.searchByID(storeID)!=null){
+        hasEnoughPoints=points>=requiredPoints;
+        points=(points-requiredPoints);
+        return hasEnoughPoints;
+
+
+    }return false;
+           
+           
+          
            
          }
-         else{
-            System.out.println(" You cannot use rewards ");
-         }
-         return false;
-
+         
     // HIIII
     
-
-}
-}
+        }
 
