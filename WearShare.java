@@ -174,9 +174,19 @@ public class WearShare {
     }
 
     public static boolean requestDonor(Donor reqDonor, Association headAss) {
-        // Imp
-        return false;
-    }
+        if(headAss.getHeadClothes()!=null){
+            reqDonor.getRewards();
+            System.out.println(" Your request is ok ");
+            return true;
+ 
+         }
+         else{
+             System.out.println(" You have a problem");
+ 
+         }
+         return false;
+     }
+     
 
     // public static int ML(BufferedImage image)
     public static int ML(int num) {
@@ -185,13 +195,21 @@ public class WearShare {
     }
 
     public static boolean useReward(Beneficiary reqBenf, Store headStore, int storeID) {
-        // Imp
-        return false;
-    }
+        if(headStore.searchByID(storeID)!=null){
+            reqBenf.addFirst(headStore.searchByID(storeID));
+            headStore.removeItem(headStore.searchByID(storeID));
+    
+            System.out.println(" You can use rewards");
+           
+         }
+         else{
+            System.out.println(" You cannot use rewards ");
+         }
+         return false;
 
     // HIIII
     
 
 }
-
+}
 
