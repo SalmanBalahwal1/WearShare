@@ -28,4 +28,5 @@ public class Association extends User{
     public void setHeadClothes(Clothes headClothes) {
         this.headClothes = headClothes;
     }
+  
 }
