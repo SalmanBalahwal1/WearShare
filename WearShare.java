@@ -219,6 +219,7 @@ public class WearShare {
 
     public static boolean useReward(Beneficiary reqBenf, Store headStore, int storeID,Donor heaDonor, int ID, int points, int requiredPoints) {
         boolean hasEnoughPoints=false;
+    
         if(heaDonor.searchByID(ID)!=null){
            hasEnoughPoints = points>= requiredPoints;
            return false;
